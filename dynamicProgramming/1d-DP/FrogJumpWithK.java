@@ -46,16 +46,15 @@ public class FrogJumpWithK {
 	
 	static int helperOfTabu(int[] dp, int[] height, int n, int k) {
 		dp[0] = 0;
-		for(int i = 1; i< n; i++) {
-			int mini_step = Integer.MAX_VALUE;
-			
-			for(int j =1; j <=k ;j++) {
-				if(i-j >= 0) {
-					int jump = dp[i - j] + Math.abs(height[i] - height[i - j]);
-                    mini_step = Math.min(jump, mini_step);
+		for(int i =0; i<n; i++){
+			int min = Integer.MAX_VALUE; 
+			for(int j =1;j<=k, j++){
+				if((i-j)>=0){
+					int a = dp[i-j] + Math.abs(height[i] - height[i-j);
+					min = Math.min(min,a);
 				}
 			}
-			dp[i] = mini_step;
+			dp[i] = min; 
 		}
 		return dp[n-1];
 	}
@@ -67,7 +66,7 @@ public class FrogJumpWithK {
 		
 		int dp[] = new int[n];
 		Arrays.fill(dp, -1);
-		System.out.println(helperOfTabu(dp,height,n-1,k));
+		System.out.println(helperOfTabu(dp,height,n,k));
 	}
 
 }
