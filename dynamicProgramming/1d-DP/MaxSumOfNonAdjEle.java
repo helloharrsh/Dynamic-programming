@@ -62,7 +62,7 @@ public class MaxSumOfNonAdjEle {
 		int dp [] = new int [n];
 		Arrays.fill(dp, -1);
 		
-		System.out.println(helperOfTabu(n-1, arr,dp));
+		System.out.println(helperOfTabu(n, arr,dp));
 	}
 	
 	
