@@ -41,17 +41,19 @@ public class MaxSumOfNonAdjEle {
 	
 	
 	static int helperOfTabu(int idx, int[]arr, int[] dp) {
-		dp[0] = arr[0];
-		for(int i =1; i< idx; i++) {
-			int pick = arr[idx];
-			if(i > 1) {
-				pick += dp[i-2];
-			}
-			int nonPick = dp[i-1];
-			dp[i] = Math.max(pick, nonPick);
-		}
-		
-		return dp[idx-1];
+		dp[0] = nums[0];
+        
+        for(int i=1;i<n;i++){
+            int pick = nums[i];
+            if(i>1){
+                pick+=dp[i-2];
+            }
+            int not_pick = dp[i-1];
+            
+            dp[i] = Math.max(pick, not_pick);
+        }
+        return dp[n-1];
+
 	}
 	
 	static void solveUsingTabu() {
