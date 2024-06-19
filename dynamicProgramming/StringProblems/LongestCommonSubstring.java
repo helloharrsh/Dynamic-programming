@@ -7,7 +7,7 @@ public class LongestCommonSubstring {
 	static int maxLength = 0;
 	public static void main(String[] args) {
 		
-		
+		solveUsingRecur();
 		solveUsingMemo();
 		System.out.println(solveUsingTabu()); 
 
@@ -52,8 +52,25 @@ public class LongestCommonSubstring {
 
         return Math.max(count1, Math.max(count2, count3));
 	}
+
+	static int solveUsingMemo(){
+		int[][] dp = new int[n + 1][m + 1];
+        	int maxLength = 0;
+
+        	for (int i = 1; i <= n; i++) {
+            		for (int j = 1; j <= m; j++) {
+	                if (s1.charAt(i - 1) == s2.charAt(j - 1)) {
+	                    dp[i][j] = dp[i - 1][j - 1] + 1;
+	                    maxLength = Math.max(maxLength, dp[i][j]);
+	                } else {
+	                    dp[i][j] = 0;
+	                }
+	            }
+	        }
 	
-	static void solveUsingMemo() {
+	        return maxLength;
+	}
+	static void solveUsingRecur() {
 		String s1 = "abcjklp";
         String s2 = "acjkp";
         int n = s1.length();
